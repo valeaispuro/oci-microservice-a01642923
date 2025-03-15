@@ -33,7 +33,7 @@ public class UserController {
         ResponseEntity.notFound().build());
     }
 
-    @GetMapping("/studentId/{studentId}")  // New endpoint to get user by Student ID
+    @GetMapping("/studentId/{studentId}")  
     public ResponseEntity<User> getUserByStudentId(@PathVariable String studentId) {
         Optional<User> user = userService.getUserByStudentId(studentId);
         return user.map(ResponseEntity::ok).orElseGet(() ->
