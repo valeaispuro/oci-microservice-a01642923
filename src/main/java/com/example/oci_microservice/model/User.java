@@ -11,7 +11,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String studentId; // MATRICULA (String)
+    private String studentId;
 
     private String firstName;
     private String lastName;
