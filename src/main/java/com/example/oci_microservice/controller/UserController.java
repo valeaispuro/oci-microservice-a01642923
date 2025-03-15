@@ -30,20 +30,26 @@ public class UserController {
     public ResponseEntity<User> getUserById(@PathVariable Long id) {
         Optional<User> user = userService.getUserById(id);
         return user.map(ResponseEntity::ok).orElseGet(() ->
-    ResponseEntity.notFound().build());
+        ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/studentId/{studentId}")  // New endpoint to get user by Student ID
+    public ResponseEntity<User> getUserByStudentId(@PathVariable String studentId) {
+        Optional<User> user = userService.getUserByStudentId(studentId);
+        return user.map(ResponseEntity::ok).orElseGet(() ->
+        ResponseEntity.notFound().build());
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User
-    userDetails) {
+    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User userDetails) {
         User updatedUser = userService.updateUser(id, userDetails);
         return updatedUser != null ? ResponseEntity.ok(updatedUser) :
-    ResponseEntity.notFound().build();
+        ResponseEntity.notFound().build();
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
         return userService.deleteUser(id) ? ResponseEntity.noContent().build() :
-    ResponseEntity.notFound().build();
+        ResponseEntity.notFound().build();
     }
 }
