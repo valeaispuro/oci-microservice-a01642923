@@ -26,7 +26,7 @@ public class UserService {
     }
 
     public Optional<User> getUserByStudentId(String studentId) {
-        return userRepository.findByStudentId(studentId); // Query by studentId
+        return userRepository.findByStudentId(studentId);
     }
 
     public User updateUser(Long id, User userDetails) {
